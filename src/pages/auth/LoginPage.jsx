@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login, loading, error: contextError } = useAuth();
+  const navigate = useNavigate();
 
   const [localError, setLocalError] = useState('');
   
@@ -25,6 +27,8 @@ const LoginPage = () => {
     
     if (!result.success) {
       setLocalError(result.error);
+    } else {
+      navigate('/dashboard');
     }
   };
 

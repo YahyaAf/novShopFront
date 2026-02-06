@@ -1,24 +1,50 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-import { useAuth } from './hooks/useAuth';
+import PrivateRoute from './components/routes/PrivateRoute';
+import PublicRoute from './components/routes/PublicRoute';
 import LoginPage from './pages/auth/LoginPage';
 import DashboardHomePage from './pages/dashboard/DashboardHomePage';
-import LoadingSpinner from './components/common/LoadingSpinner';
-
-const AppContent = () => {
-  const { isAuthenticated, loading } = useAuth();
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
-  return isAuthenticated ? <DashboardHomePage /> : <LoginPage />;
-};
+import UsersPage from './pages/dashboard/UsersPage';
+import ClientHomePage from './pages/client/ClientHomePage';
 
 function App() {
   return (
-    <AuthProvider>
-      <AppContent />
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <DashboardHomePage />
+              </PrivateRoute>
+            }
+          />
+          
+          <Route
+            path="/dashboard/users"
+            element={
+              <PrivateRoute>
+                <UsersPage />
+              </PrivateRoute>
+            }
+          />
+          
+          <Route path="/" element={<ClientHomePage />} />
+          
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
