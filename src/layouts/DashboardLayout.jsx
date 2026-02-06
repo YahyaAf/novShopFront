@@ -51,6 +51,16 @@ const DashboardLayout = ({ children }) => {
                 >
                   Clients
                 </Link>
+                <Link
+                  to="/dashboard/products"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition ${
+                    isActive('/dashboard/products')
+                      ? 'bg-indigo-600 text-white'
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  Produits
+                </Link>
               </div>
             </div>
             <div className="flex items-center space-x-4">

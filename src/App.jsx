@@ -6,6 +6,7 @@ import LoginPage from './pages/auth/LoginPage';
 import DashboardHomePage from './pages/dashboard/DashboardHomePage';
 import UsersPage from './pages/dashboard/UsersPage';
 import ClientsPage from './pages/dashboard/ClientsPage';
+import ProductsPage from './pages/dashboard/ProductsPage';
 import ClientHomePage from './pages/client/ClientHomePage';
 import ClientStatsPage from './pages/client/ClientStatsPage';
 
@@ -46,6 +47,15 @@ function App() {
             element={
               <PrivateRoute>
                 <ClientsPage />
+              </PrivateRoute>
+            }
+          />
+          
+          <Route
+            path="/dashboard/products"
+            element={
+              <PrivateRoute>
+                <ProductsPage />
               </PrivateRoute>
             }
           />
