@@ -5,7 +5,9 @@ import PublicRoute from './components/routes/PublicRoute';
 import LoginPage from './pages/auth/LoginPage';
 import DashboardHomePage from './pages/dashboard/DashboardHomePage';
 import UsersPage from './pages/dashboard/UsersPage';
+import ClientsPage from './pages/dashboard/ClientsPage';
 import ClientHomePage from './pages/client/ClientHomePage';
+import ClientStatsPage from './pages/client/ClientStatsPage';
 
 function App() {
   return (
@@ -39,7 +41,25 @@ function App() {
             }
           />
           
+          <Route
+            path="/dashboard/clients"
+            element={
+              <PrivateRoute>
+                <ClientsPage />
+              </PrivateRoute>
+            }
+          />
+          
           <Route path="/" element={<ClientHomePage />} />
+          
+          <Route
+            path="/stats"
+            element={
+              <PrivateRoute>
+                <ClientStatsPage />
+              </PrivateRoute>
+            }
+          />
           
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

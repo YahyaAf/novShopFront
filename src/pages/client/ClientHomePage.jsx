@@ -1,59 +1,72 @@
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import ClientLayout from '../../layouts/ClientLayout';
+
 const ClientHomePage = () => {
+  const { isAuthenticated, user } = useAuth();
+  const isClient = user?.role === 'CLIENT';
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-indigo-600">SmartShop</h1>
-            </div>
-            <div className="flex items-center space-x-6">
-              <a href="#" className="text-gray-700 hover:text-indigo-600 font-medium">Accueil</a>
-              <a href="#" className="text-gray-700 hover:text-indigo-600 font-medium">Produits</a>
-              <a href="#" className="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
-              <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
-                Connexion
-              </button>
-            </div>
+    <ClientLayout>
+      <div className="text-center py-20">
+        <h1 className="text-5xl font-bold text-gray-900 mb-6">Bienvenue sur NovaShop</h1>
+        <p className="text-xl text-gray-600 mb-8">Découvrez nos produits exclusifs</p>
+        
+        {isAuthenticated ? (
+          <div className="space-y-4">
+            <p className="text-lg text-gray-700">Bonjour <span className="font-semibold text-indigo-600">{user?.username}</span>!</p>
+            {isClient ? (
+              <Link
+                to="/stats"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg hover:from-indigo-700 hover:to-purple-700 transition shadow-lg"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                Voir mes statistiques
+              </Link>
+            ) : (
+              <Link
+                to="/dashboard"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg hover:from-indigo-700 hover:to-purple-700 transition shadow-lg"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                Accéder au Dashboard
+              </Link>
+            )}
           </div>
-        </div>
-      </nav>
+        ) : (
+          <Link
+            to="/login"
+            className="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition"
+          >
+            Se connecter
+          </Link>
+        )}
 
-      <main>
-        <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-5xl font-bold mb-4">Bienvenue sur SmartShop</h1>
-            <p className="text-xl mb-8">Découvrez nos produits exceptionnels</p>
-            <button className="px-8 py-3 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-gray-100 transition">
-              Découvrir
-            </button>
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="text-4xl mb-4">🛍️</div>
+            <h3 className="text-xl font-semibold mb-2">Large Sélection</h3>
+            <p className="text-gray-600">Des milliers de produits disponibles</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="text-4xl mb-4">🚚</div>
+            <h3 className="text-xl font-semibold mb-2">Livraison Rapide</h3>
+            <p className="text-gray-600">Livraison sous 48h partout au Maroc</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="text-4xl mb-4">💎</div>
+            <h3 className="text-xl font-semibold mb-2">Programme Fidélité</h3>
+            <p className="text-gray-600">Gagnez des récompenses à chaque achat</p>
           </div>
         </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Produits populaires</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
-                <div className="h-48 bg-gradient-to-br from-indigo-400 to-purple-500"></div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Produit {item}</h3>
-                  <p className="text-gray-600 mb-4">Description du produit {item}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-indigo-600">99.99 €</span>
-                    <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
-                      Ajouter
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </main>
-    </div>
+      </div>
+    </ClientLayout>
   );
 };
 
 export default ClientHomePage;
+
