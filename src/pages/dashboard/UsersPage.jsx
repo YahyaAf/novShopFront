@@ -61,7 +61,7 @@ const UsersPage = () => {
     return (
       <DashboardLayout>
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-indigo-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-teal-600"></div>
         </div>
       </DashboardLayout>
     );
@@ -70,10 +70,10 @@ const UsersPage = () => {
   return (
     <DashboardLayout>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-900">Gestion des Utilisateurs</h1>
+        <h1 className="text-3xl font-bold text-slate-900">Gestion des Utilisateurs</h1>
         <button
           onClick={handleCreate}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center space-x-2"
+          className="px-4 py-2 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg hover:from-teal-600 hover:to-teal-700 shadow-md hover:scale-[1.02] transition-all flex items-center space-x-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />

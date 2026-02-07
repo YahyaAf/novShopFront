@@ -99,12 +99,12 @@ const CommandesPage = () => {
     <DashboardLayout>
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Gestion des Commandes</h1>
-          <p className="text-gray-600 mt-1">Suivez et gérez toutes vos commandes</p>
+          <h1 className="text-3xl font-bold text-slate-900">Gestion des Commandes</h1>
+          <p className="text-slate-600 mt-1">Suivez et gérez toutes vos commandes</p>
         </div>
         <button
           onClick={handleCreate}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center space-x-2"
+          className="px-4 py-2 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg hover:from-teal-600 hover:to-teal-700 shadow-md hover:scale-[1.02] transition-all flex items-center space-x-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
@@ -143,84 +143,84 @@ const CommandesPage = () => {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-lg shadow-md p-4 border border-slate-100">
           <div className="flex items-center">
-            <div className="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+            <div className="flex-shrink-0 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg p-3 shadow-md">
               <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">Total</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.totalCommandes}</p>
+              <p className="text-sm font-medium text-slate-500">Total</p>
+              <p className="text-2xl font-bold text-slate-900">{stats.totalCommandes}</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-lg shadow-md p-4 border border-slate-100">
           <div className="flex items-center">
-            <div className="flex-shrink-0 bg-yellow-500 rounded-md p-3">
+            <div className="flex-shrink-0 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg p-3 shadow-md">
               <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">En attente</p>
+              <p className="text-sm font-medium text-slate-500">En attente</p>
               <p className="text-2xl font-bold text-yellow-600">{stats.pending}</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-lg shadow-md p-4 border border-slate-100">
           <div className="flex items-center">
-            <div className="flex-shrink-0 bg-green-500 rounded-md p-3">
+            <div className="flex-shrink-0 bg-gradient-to-br from-green-400 to-green-500 rounded-lg p-3 shadow-md">
               <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
               </svg>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">Confirmées</p>
+              <p className="text-sm font-medium text-slate-500">Confirmées</p>
               <p className="text-2xl font-bold text-green-600">{stats.confirmed}</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-lg shadow-md p-4 border border-slate-100">
           <div className="flex items-center">
-            <div className="flex-shrink-0 bg-gray-500 rounded-md p-3">
+            <div className="flex-shrink-0 bg-gradient-to-br from-slate-400 to-slate-500 rounded-lg p-3 shadow-md">
               <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">Annulées</p>
-              <p className="text-2xl font-bold text-gray-600">{stats.canceled}</p>
+              <p className="text-sm font-medium text-slate-500">Annulées</p>
+              <p className="text-2xl font-bold text-slate-600">{stats.canceled}</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-lg shadow-md p-4 border border-slate-100">
           <div className="flex items-center">
-            <div className="flex-shrink-0 bg-purple-500 rounded-md p-3">
+            <div className="flex-shrink-0 bg-gradient-to-br from-teal-600 to-teal-700 rounded-lg p-3 shadow-md">
               <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">Revenu</p>
-              <p className="text-lg font-bold text-purple-600">{formatPrice(stats.totalRevenue)}</p>
+              <p className="text-sm font-medium text-slate-500">Revenu</p>
+              <p className="text-lg font-bold text-teal-700">{formatPrice(stats.totalRevenue)}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow p-4 mb-4">
+      <div className="bg-white rounded-lg shadow-md p-4 mb-4 border border-slate-100">
         <div className="flex items-center space-x-4">
-          <label className="text-sm font-medium text-gray-700">Filtrer par statut:</label>
+          <label className="text-sm font-medium text-slate-700">Filtrer par statut:</label>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
           >
             <option value="">Tous</option>
             <option value="PENDING">En attente</option>

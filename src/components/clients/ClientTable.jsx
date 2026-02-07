@@ -35,26 +35,26 @@ const ClientTable = ({ clients, onEdit, onDelete }) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow overflow-hidden">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden border border-slate-100">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+        <table className="min-w-full divide-y divide-slate-200">
+          <thead className="bg-slate-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Username</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Téléphone</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Adresse</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Niveau</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">ID</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Username</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Téléphone</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Adresse</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Niveau</th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white divide-y divide-slate-200">
             {clients.map((client) => (
-              <tr key={client.id} className="hover:bg-gray-50 transition">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{client.id}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{client.username}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{client.telephone}</td>
-                <td className="px-6 py-4 text-sm text-gray-700 max-w-xs truncate">{client.adresse}</td>
+              <tr key={client.id} className="hover:bg-slate-50 transition">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">{client.id}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">{client.username}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700">{client.telephone}</td>
+                <td className="px-6 py-4 text-sm text-slate-700 max-w-xs truncate">{client.adresse}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getTierBadge(client.niveauFidelite)}`}>
                     {getTierIcon(client.niveauFidelite)} {client.niveauFidelite}
@@ -63,7 +63,7 @@ const ClientTable = ({ clients, onEdit, onDelete }) => {
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                   <button
                     onClick={() => onEdit(client)}
-                    className="text-indigo-600 hover:text-indigo-900 transition"
+                    className="text-teal-600 hover:text-teal-900 transition"
                     title="Modifier"
                   >
                     <svg className="w-5 h-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">

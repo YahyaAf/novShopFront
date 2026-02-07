@@ -37,9 +37,17 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-purple-700">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Connexion</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-400 via-teal-500 to-slate-600">
+      <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md backdrop-blur-sm">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-teal-500 to-teal-600 mb-4">
+            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-800">SmartShop</h2>
+          <p className="text-slate-500 mt-1">Bienvenue, connectez-vous</p>
+        </div>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -53,7 +61,7 @@ const LoginPage = () => {
               onChange={(e) => setUsername(e.target.value)}
               disabled={loading}
               placeholder="Entrez votre username"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition disabled:bg-gray-100 disabled:cursor-not-allowed"
+              className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition disabled:bg-gray-100 disabled:cursor-not-allowed bg-slate-50"
             />
           </div>
 
@@ -68,7 +76,7 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               disabled={loading}
               placeholder="Entrez votre password"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition disabled:bg-gray-100 disabled:cursor-not-allowed"
+              className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition disabled:bg-gray-100 disabled:cursor-not-allowed bg-slate-50"
             />
           </div>
 
@@ -84,7 +92,7 @@ const LoginPage = () => {
           <button 
             type="submit" 
             disabled={loading}
-            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition transform hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none"
+            className="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-3 rounded-lg font-semibold hover:from-teal-600 hover:to-teal-700 transition transform hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none shadow-lg shadow-teal-500/50"
           >
             {loading ? 'Connexion...' : 'Se connecter'}
           </button>

@@ -81,30 +81,30 @@ const PromoTable = ({ promos, onEdit, onDelete }) => {
             const remainingUses = promo.maxUsage - promo.usageCount;
 
             return (
-              <tr key={promo.id} className="hover:bg-gray-50 transition">
+              <tr key={promo.id} className="hover:bg-slate-50 transition">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
-                    <div className="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded">
+                    <div className="text-sm font-bold text-teal-600 bg-teal-50 px-3 py-1 rounded">
                       {promo.code}
                     </div>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">
+                  <div className="text-sm text-slate-900">
                     <span className="font-semibold">{promo.usageCount}</span> / {promo.maxUsage}
                   </div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-slate-500">
                     Reste: <span className="font-semibold">{remainingUses}</span>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                  <div className="w-full bg-slate-200 rounded-full h-2.5">
                     <div 
                       className={`${progressColor} h-2.5 rounded-full transition-all duration-300`}
                       style={{ width: `${percentage}%` }}
                     ></div>
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">{percentage.toFixed(0)}%</div>
+                  <div className="text-xs text-slate-500 mt-1">{percentage.toFixed(0)}%</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {getStatusBadge(promo)}
@@ -112,7 +112,7 @@ const PromoTable = ({ promos, onEdit, onDelete }) => {
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                   <button
                     onClick={() => onEdit(promo)}
-                    className="text-indigo-600 hover:text-indigo-900 inline-flex items-center px-3 py-1 border border-indigo-300 rounded-lg hover:bg-indigo-50 transition"
+                    className="text-teal-600 hover:text-teal-900 inline-flex items-center px-3 py-1 border border-teal-300 rounded-lg hover:bg-teal-50 transition"
                   >
                     <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />

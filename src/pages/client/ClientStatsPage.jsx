@@ -63,7 +63,7 @@ const ClientStatsPage = () => {
     return (
       <ClientLayout>
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-indigo-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-teal-600"></div>
         </div>
       </ClientLayout>
     );
@@ -111,8 +111,8 @@ const ClientStatsPage = () => {
     <ClientLayout>
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Mes Statistiques</h1>
-          <p className="text-gray-600">Suivez votre progression et votre niveau de fidélité</p>
+          <h1 className="text-4xl font-bold text-slate-900 mb-2">Mes Statistiques</h1>
+          <p className="text-slate-600">Suivez votre progression et votre niveau de fidélité</p>
         </div>
 
         <div className={`bg-gradient-to-r ${getTierColor(stats.niveauFidelite)} rounded-2xl shadow-2xl p-8 text-white`}>
@@ -124,62 +124,62 @@ const ClientStatsPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow-md p-6 border border-slate-100">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Commandes</h3>
-              <svg className="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <h3 className="text-lg font-semibold text-slate-900">Commandes</h3>
+              <svg className="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
             </div>
-            <p className="text-4xl font-bold text-indigo-600 mb-2">{stats.totalOrders}</p>
-            <p className="text-sm text-gray-500">Total de commandes passées</p>
+            <p className="text-4xl font-bold text-teal-600 mb-2">{stats.totalOrders}</p>
+            <p className="text-sm text-slate-500">Total de commandes passées</p>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow-md p-6 border border-slate-100">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Dépenses</h3>
-              <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <h3 className="text-lg font-semibold text-slate-900">Dépenses</h3>
+              <svg className="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <p className="text-4xl font-bold text-green-600 mb-2">{stats.totalSpent?.toFixed(2)} DH</p>
-            <p className="text-sm text-gray-500">Montant total dépensé</p>
+            <p className="text-4xl font-bold text-teal-600 mb-2">{stats.totalSpent?.toFixed(2)} DH</p>
+            <p className="text-sm text-slate-500">Montant total dépensé</p>
           </div>
         </div>
 
         {stats.prochainNiveau && (
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow-md p-6 border border-slate-100">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-semibold text-gray-900">Progression vers {stats.prochainNiveau}</h3>
+              <h3 className="text-xl font-semibold text-slate-900">Progression vers {stats.prochainNiveau}</h3>
               <span className="text-2xl">{getTierIcon(stats.prochainNiveau)}</span>
             </div>
 
             <div className="space-y-4">
               <div className="relative">
                 <div className="flex mb-2 items-center justify-between">
-                  <span className="text-sm font-medium text-gray-700">Progression globale</span>
-                  <span className="text-sm font-medium text-indigo-600">{getProgressPercentage().toFixed(0)}%</span>
+                  <span className="text-sm font-medium text-slate-700">Progression globale</span>
+                  <span className="text-sm font-medium text-teal-600">{getProgressPercentage().toFixed(0)}%</span>
                 </div>
-                <div className="overflow-hidden h-4 text-xs flex rounded-full bg-gray-200">
+                <div className="overflow-hidden h-4 text-xs flex rounded-full bg-slate-200">
                   <div
                     style={{ width: `${getProgressPercentage()}%` }}
-                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-500"
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-teal-500 to-teal-600 transition-all duration-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
                 {stats.commandesRestantes !== null && (
-                  <div className="bg-indigo-50 rounded-lg p-4">
-                    <p className="text-sm text-gray-600 mb-1">Commandes restantes</p>
-                    <p className="text-2xl font-bold text-indigo-600">{stats.commandesRestantes}</p>
+                  <div className="bg-teal-50 rounded-lg p-4">
+                    <p className="text-sm text-slate-600 mb-1">Commandes restantes</p>
+                    <p className="text-2xl font-bold text-teal-600">{stats.commandesRestantes}</p>
                   </div>
                 )}
 
                 {stats.montantRestant !== null && (
-                  <div className="bg-green-50 rounded-lg p-4">
-                    <p className="text-sm text-gray-600 mb-1">Montant restant</p>
-                    <p className="text-2xl font-bold text-green-600">{stats.montantRestant?.toFixed(2)} DH</p>
+                  <div className="bg-teal-50 rounded-lg p-4">
+                    <p className="text-sm text-slate-600 mb-1">Montant restant</p>
+                    <p className="text-2xl font-bold text-teal-600">{stats.montantRestant?.toFixed(2)} DH</p>
                   </div>
                 )}
               </div>
@@ -188,21 +188,21 @@ const ClientStatsPage = () => {
         )}
 
         {!stats.prochainNiveau && (
-          <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg shadow-lg p-8 text-white text-center">
+          <div className="bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg shadow-lg p-8 text-white text-center">
             <div className="text-5xl mb-4">🎉</div>
             <h3 className="text-2xl font-bold mb-2">Félicitations!</h3>
             <p className="text-lg">Vous avez atteint le niveau maximum: PLATINUM</p>
           </div>
         )}
 
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-indigo-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-            <svg className="w-5 h-5 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="bg-gradient-to-r from-teal-50 to-teal-100 rounded-lg p-6 border border-teal-200">
+          <h3 className="text-lg font-semibold text-slate-900 mb-3 flex items-center">
+            <svg className="w-5 h-5 text-teal-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Avantages de votre niveau
           </h3>
-          <ul className="space-y-2 text-sm text-gray-700">
+          <ul className="space-y-2 text-sm text-slate-700">
             {stats.niveauFidelite === 'BASIC' && (
               <>
                 <li className="flex items-center">✓ Accès aux offres standards</li>

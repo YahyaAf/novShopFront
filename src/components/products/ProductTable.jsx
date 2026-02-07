@@ -33,23 +33,23 @@ const ProductTable = ({ products, onEdit, onDelete }) => {
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+        <table className="min-w-full divide-y divide-slate-200">
+          <thead className="bg-slate-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prix</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">ID</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Nom</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Description</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Prix</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Stock</th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white divide-y divide-slate-200">
             {products.map((product) => (
-              <tr key={product.id} className="hover:bg-gray-50 transition">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{product.id}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">{product.nom}</td>
-                <td className="px-6 py-4 text-sm text-gray-700 max-w-xs truncate">
+              <tr key={product.id} className="hover:bg-slate-50 transition">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">{product.id}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-900">{product.nom}</td>
+                <td className="px-6 py-4 text-sm text-slate-700 max-w-xs truncate">
                   {product.description || 'Aucune description'}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600">
@@ -63,7 +63,7 @@ const ProductTable = ({ products, onEdit, onDelete }) => {
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                   <button
                     onClick={() => onEdit(product)}
-                    className="text-indigo-600 hover:text-indigo-900 transition"
+                    className="text-teal-600 hover:text-teal-900 transition"
                     title="Modifier"
                   >
                     <svg className="w-5 h-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">

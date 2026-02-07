@@ -39,7 +39,7 @@ const CommandeTable = ({ commandes, onViewDetails, onConfirm, onCancel }) => {
 
   const getTierBadge = (tier) => {
     const badges = {
-      BASIC: { bg: 'bg-gray-100', text: 'text-gray-800', label: 'Basic' },
+      BASIC: { bg: 'bg-slate-100', text: 'text-slate-800', label: 'Basic' },
       SILVER: { bg: 'bg-slate-200', text: 'text-slate-800', label: 'Silver' },
       GOLD: { bg: 'bg-yellow-100', text: 'text-yellow-800', label: 'Gold' },
       PLATINUM: { bg: 'bg-purple-100', text: 'text-purple-800', label: 'Platinum' }
@@ -73,60 +73,60 @@ const CommandeTable = ({ commandes, onViewDetails, onConfirm, onCancel }) => {
 
   if (commandes.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow p-8 text-center">
-        <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="bg-white rounded-lg shadow-md p-8 text-center border border-slate-100">
+        <svg className="mx-auto h-12 w-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
         </svg>
-        <h3 className="mt-2 text-sm font-medium text-gray-900">Aucune commande</h3>
-        <p className="mt-1 text-sm text-gray-500">Commencez par créer une nouvelle commande.</p>
+        <h3 className="mt-2 text-sm font-medium text-slate-900">Aucune commande</h3>
+        <p className="mt-1 text-sm text-slate-500">Commencez par créer une nouvelle commande.</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow overflow-hidden">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden border border-slate-100">
+      <table className="min-w-full divide-y divide-slate-200">
+        <thead className="bg-slate-50">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
               Numéro
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
               Date
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
               Client
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
               Montant TTC
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
               Statut
             </th>
-            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider">
               Actions
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-slate-200">
           {commandes.map((commande) => (
-            <tr key={commande.id} className="hover:bg-gray-50 transition">
+            <tr key={commande.id} className="hover:bg-slate-50 transition">
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm font-bold text-indigo-600">
+                <div className="text-sm font-bold text-teal-600">
                   {commande.numeroCommande}
                 </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900">{formatDate(commande.dateCreation)}</div>
+                <div className="text-sm text-slate-900">{formatDate(commande.dateCreation)}</div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm font-medium text-gray-900">{commande.clientNom}</div>
-                <div className="text-xs text-gray-500 mt-1">
+                <div className="text-sm font-medium text-slate-900">{commande.clientNom}</div>
+                <div className="text-xs text-slate-500 mt-1">
                   {getTierBadge(commande.clientNiveauFidelite)}
                 </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm font-bold text-gray-900">{formatPrice(commande.totalTTC)}</div>
+                <div className="text-sm font-bold text-slate-900">{formatPrice(commande.totalTTC)}</div>
                 {commande.montantRemiseTotal > 0 && (
                   <div className="text-xs text-green-600">
                     Remise: -{formatPrice(commande.montantRemiseTotal)}
@@ -139,7 +139,7 @@ const CommandeTable = ({ commandes, onViewDetails, onConfirm, onCancel }) => {
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                 <button
                   onClick={() => onViewDetails(commande)}
-                  className="text-indigo-600 hover:text-indigo-900 inline-flex items-center px-3 py-1 border border-indigo-300 rounded-lg hover:bg-indigo-50 transition"
+                  className="text-teal-600 hover:text-teal-900 inline-flex items-center px-3 py-1 border border-teal-300 rounded-lg hover:bg-teal-50 transition"
                 >
                   <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

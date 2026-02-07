@@ -103,7 +103,7 @@ const ProductsPage = () => {
     return (
       <DashboardLayout>
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-indigo-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-teal-600"></div>
         </div>
       </DashboardLayout>
     );
@@ -113,12 +113,12 @@ const ProductsPage = () => {
     <DashboardLayout>
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Gestion des Produits</h1>
-          <p className="text-gray-600 mt-1">Gérez votre catalogue de produits</p>
+          <h1 className="text-3xl font-bold text-slate-900">Gestion des Produits</h1>
+          <p className="text-slate-600 mt-1">Gérez votre catalogue de produits</p>
         </div>
         <button
           onClick={handleCreate}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center space-x-2"
+          className="px-4 py-2 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg hover:from-teal-600 hover:to-teal-700 shadow-md hover:scale-[1.02] transition-all flex items-center space-x-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
@@ -133,22 +133,22 @@ const ProductsPage = () => {
         </div>
       )}
 
-      <div className="bg-white rounded-lg shadow p-4 mb-4">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Filtres</h3>
+      <div className="bg-white rounded-lg shadow-md p-4 mb-4 border border-slate-100">
+        <h3 className="text-lg font-semibold text-slate-900 mb-4">Filtres</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Nom</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Nom</label>
             <input
               type="text"
               name="nom"
               value={filters.nom}
               onChange={handleFilterChange}
               placeholder="Rechercher..."
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Prix min (DH)</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Prix min (DH)</label>
             <input
               type="number"
               name="minPrice"
@@ -156,11 +156,11 @@ const ProductsPage = () => {
               onChange={handleFilterChange}
               placeholder="0.00"
               step="0.01"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Prix max (DH)</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Prix max (DH)</label>
             <input
               type="number"
               name="maxPrice"
@@ -168,16 +168,16 @@ const ProductsPage = () => {
               onChange={handleFilterChange}
               placeholder="0.00"
               step="0.01"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Disponibilité</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Disponibilité</label>
             <select
               name="inStock"
               value={filters.inStock}
               onChange={handleFilterChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
             >
               <option value="">Tous</option>
               <option value="true">En stock</option>
@@ -188,25 +188,25 @@ const ProductsPage = () => {
         <div className="flex space-x-3 mt-4">
           <button
             onClick={applyFilters}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+            className="px-4 py-2 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg hover:from-teal-600 hover:to-teal-700 shadow-md hover:scale-[1.02] transition-all"
           >
             Appliquer
           </button>
           <button
             onClick={resetFilters}
-            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition"
+            className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100 transition-all"
           >
             Réinitialiser
           </button>
         </div>
       </div>
 
-      <div className="mb-4 bg-blue-50 border-l-4 border-blue-500 p-4 rounded flex justify-between items-center">
+      <div className="mb-4 bg-teal-50 border-l-4 border-teal-500 p-4 rounded flex justify-between items-center">
         <div className="flex items-center">
-          <svg className="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-teal-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <p className="text-sm text-blue-700">
+          <p className="text-sm text-teal-700">
             <strong>Total:</strong> {pagination.totalElements} produit(s) | 
             <strong className="ml-2">Page:</strong> {pagination.currentPage + 1} / {pagination.totalPages}
           </p>
@@ -215,19 +215,19 @@ const ProductsPage = () => {
           <button
             onClick={() => handlePageChange(pagination.currentPage - 1)}
             disabled={pagination.currentPage === 0}
-            className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-3 py-1 border border-slate-300 text-slate-700 rounded hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <span className="text-sm text-gray-700">
+          <span className="text-sm text-slate-700">
             {pagination.currentPage + 1} / {pagination.totalPages || 1}
           </span>
           <button
             onClick={() => handlePageChange(pagination.currentPage + 1)}
             disabled={pagination.currentPage >= pagination.totalPages - 1}
-            className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-3 py-1 border border-slate-300 text-slate-700 rounded hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />

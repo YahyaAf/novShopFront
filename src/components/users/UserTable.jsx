@@ -34,14 +34,14 @@ const UserTable = ({ users, onEdit, onDelete, onActivate }) => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                   {user.id}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">
                   {user.username}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">
                   <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                     user.role === 'ADMIN' 
-                      ? 'bg-purple-100 text-purple-800' 
-                      : 'bg-blue-100 text-blue-800'
+                      ? 'bg-teal-100 text-teal-800' 
+                      : 'bg-teal-50 text-teal-700'
                   }`}>
                     {user.role}
                   </span>
@@ -61,7 +61,7 @@ const UserTable = ({ users, onEdit, onDelete, onActivate }) => {
                   <div className="flex justify-end space-x-2">
                     <button
                       onClick={() => onEdit(user)}
-                      className="text-indigo-600 hover:text-indigo-900"
+                      className="text-teal-600 hover:text-teal-900"
                       title="Modifier"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
