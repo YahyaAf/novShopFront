@@ -1,10 +1,14 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
 const DashboardLayout = ({ children }) => {
   const { user, logout, loading } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
+  if (!loading && user && user.role !== 'ADMIN') {
+    return <Navigate to="/stats" replace />;
+  }
 
   const handleLogout = async () => {
     await logout();

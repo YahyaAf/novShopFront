@@ -32,16 +32,20 @@ const ProductsPage = () => {
 
   const handleDelete = (product) => {
     setSelectedProduct(product);
+    setDeleteError(null);
     setIsDeleteModalOpen(true);
   };
 
   const confirmDelete = async () => {
     if (!selectedProduct) return;
 
+    setDeleteError(null);
     const result = await deleteProduct(selectedProduct.id);
     if (result.success) {
       setIsDeleteModalOpen(false);
       refetch();
+    } else {
+      setDeleteError(result.error);
     }
   };
 
@@ -251,8 +255,13 @@ const ProductsPage = () => {
           title="Supprimer le produit"
           message={`Êtes-vous sûr de vouloir supprimer le produit "${selectedProduct?.nom}" ? Cette action est irréversible.`}
           onConfirm={confirmDelete}
-          onCancel={() => setIsDeleteModalOpen(false)}
+          onCancel={() => {
+            setDeleteError(null);
+            setIsDeleteModalOpen(false);
+          }}
           isDangerous={true}
+          error={deleteError}
+          loading={mutationLoading}
         />
       )}
     </DashboardLayout>

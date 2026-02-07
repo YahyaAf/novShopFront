@@ -28,7 +28,11 @@ const LoginPage = () => {
     if (!result.success) {
       setLocalError(result.error);
     } else {
-      navigate('/dashboard');
+      if (result.data.role === 'ADMIN') {
+        navigate('/dashboard');
+      } else {
+        navigate('/stats');
+      }
     }
   };
 

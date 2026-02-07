@@ -7,11 +7,12 @@ import DeleteModal from '../../components/common/DeleteModal';
 
 const PromosPage = () => {
   const { promos, loading, error, refetch } = usePromos();
-  const { deletePromo } = usePromoMutations();
+  const { deletePromo, loading: mutationLoading } = usePromoMutations();
   
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedPromo, setSelectedPromo] = useState(null);
+  const [deleteError, setDeleteError] = useState(null);
 
   const handleCreate = () => {
     setSelectedPromo(null);
@@ -25,16 +26,20 @@ const PromosPage = () => {
 
   const handleDelete = (promo) => {
     setSelectedPromo(promo);
+    setDeleteError(null);
     setIsDeleteModalOpen(true);
   };
 
   const confirmDelete = async () => {
     if (!selectedPromo) return;
 
+    setDeleteError(null);
     const result = await deletePromo(selectedPromo.id);
     if (result.success) {
       setIsDeleteModalOpen(false);
       refetch();
+    } else {
+      setDeleteError(result.error);
     }
   };
 
@@ -167,8 +172,13 @@ const PromosPage = () => {
           title="Supprimer le code promo"
           message={`Êtes-vous sûr de vouloir supprimer le code "${selectedPromo?.code}" ? Cette action est irréversible.`}
           onConfirm={confirmDelete}
-          onCancel={() => setIsDeleteModalOpen(false)}
+          onCancel={() => {
+            setDeleteError(null);
+            setIsDeleteModalOpen(false);
+          }}
           isDangerous={true}
+          error={deleteError}
+          loading={mutationLoading}
         />
       )}
     </DashboardLayout>

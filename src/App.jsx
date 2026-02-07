@@ -29,7 +29,7 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <PrivateRoute>
+              <PrivateRoute allowedRoles={['ADMIN']}>
                 <DashboardHomePage />
               </PrivateRoute>
             }
@@ -38,7 +38,7 @@ function App() {
           <Route
             path="/dashboard/users"
             element={
-              <PrivateRoute>
+              <PrivateRoute allowedRoles={['ADMIN']}>
                 <UsersPage />
               </PrivateRoute>
             }
@@ -47,7 +47,7 @@ function App() {
           <Route
             path="/dashboard/clients"
             element={
-              <PrivateRoute>
+              <PrivateRoute allowedRoles={['ADMIN']}>
                 <ClientsPage />
               </PrivateRoute>
             }
@@ -56,7 +56,7 @@ function App() {
           <Route
             path="/dashboard/products"
             element={
-              <PrivateRoute>
+              <PrivateRoute allowedRoles={['ADMIN']}>
                 <ProductsPage />
               </PrivateRoute>
             }
@@ -65,7 +65,7 @@ function App() {
           <Route
             path="/dashboard/promos"
             element={
-              <PrivateRoute>
+              <PrivateRoute allowedRoles={['ADMIN']}>
                 <PromosPage />
               </PrivateRoute>
             }
@@ -74,7 +74,7 @@ function App() {
           <Route
             path="/dashboard/commandes"
             element={
-              <PrivateRoute>
+              <PrivateRoute allowedRoles={['ADMIN']}>
                 <CommandesPage />
               </PrivateRoute>
             }
@@ -85,7 +85,7 @@ function App() {
           <Route
             path="/stats"
             element={
-              <PrivateRoute>
+              <PrivateRoute allowedRoles={['CLIENT']}>
                 <ClientStatsPage />
               </PrivateRoute>
             }

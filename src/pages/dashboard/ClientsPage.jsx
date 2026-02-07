@@ -7,12 +7,13 @@ import DeleteModal from '../../components/common/DeleteModal';
 
 const ClientsPage = () => {
   const { clients, loading, error, refetch } = useClients();
-  const { deleteClient } = useClientMutations();
+  const { deleteClient, loading: mutationLoading } = useClientMutations();
   
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
   const [deleteType, setDeleteType] = useState('soft');
+  const [deleteError, setDeleteError] = useState(null);
 
   const handleCreate = () => {
     setSelectedClient(null);
@@ -27,16 +28,20 @@ const ClientsPage = () => {
   const handleDelete = (client, hard = false) => {
     setSelectedClient(client);
     setDeleteType(hard ? 'hard' : 'soft');
+    setDeleteError(null);
     setIsDeleteModalOpen(true);
   };
 
   const confirmDelete = async () => {
     if (!selectedClient) return;
 
+    setDeleteError(null);
     const result = await deleteClient(selectedClient.id, deleteType === 'hard');
     if (result.success) {
       setIsDeleteModalOpen(false);
       refetch();
+    } else {
+      setDeleteError(result.error);
     }
   };
 
@@ -113,8 +118,13 @@ const ClientsPage = () => {
               : `Êtes-vous sûr de vouloir désactiver le client "${selectedClient?.username}" ? L'utilisateur associé sera également désactivé.`
           }
           onConfirm={confirmDelete}
-          onCancel={() => setIsDeleteModalOpen(false)}
+          onCancel={() => {
+            setDeleteError(null);
+            setIsDeleteModalOpen(false);
+          }}
           isDangerous={deleteType === 'hard'}
+          error={deleteError}
+          loading={mutationLoading}
         />
       )}
     </DashboardLayout>

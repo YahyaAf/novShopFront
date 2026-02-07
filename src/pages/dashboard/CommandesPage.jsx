@@ -9,12 +9,14 @@ import DeleteModal from '../../components/common/DeleteModal';
 const CommandesPage = () => {
   const [statusFilter, setStatusFilter] = useState('');
   const { commandes, loading, error, refetch } = useCommandes({ status: statusFilter || undefined });
-  const { confirmCommande, cancelCommande } = useCommandeMutations();
+  const { confirmCommande, cancelCommande, loading: mutationLoading } = useCommandeMutations();
   
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [selectedCommande, setSelectedCommande] = useState(null);
+  const [cancelError, setCancelError] = useState(null);
+  const [confirmError, setConfirmError] = useState(null);
 
   const handleCreate = () => {
     setIsFormModalOpen(true);
@@ -27,25 +29,32 @@ const CommandesPage = () => {
 
   const handleConfirm = async (commande) => {
     if (window.confirm(`Confirmer la commande ${commande.numeroCommande} ?`)) {
+      setConfirmError(null);
       const result = await confirmCommande(commande.id);
       if (result.success) {
         refetch();
+      } else {
+        setConfirmError(result.error);
       }
     }
   };
 
   const handleCancelClick = (commande) => {
     setSelectedCommande(commande);
+    setCancelError(null);
     setIsCancelModalOpen(true);
   };
 
   const confirmCancel = async () => {
     if (!selectedCommande) return;
 
+    setCancelError(null);
     const result = await cancelCommande(selectedCommande.id);
     if (result.success) {
       setIsCancelModalOpen(false);
       refetch();
+    } else {
+      setCancelError(result.error);
     }
   };
 
@@ -106,7 +115,30 @@ const CommandesPage = () => {
 
       {error && (
         <div className="bg-red-50 border-l-4 border-red-500 text-red-700 px-4 py-3 rounded mb-4">
-          {error}
+          <div className="flex items-start">
+            <svg className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+            </svg>
+            <span className="font-medium">{error}</span>
+          </div>
+        </div>
+      )}
+
+      {confirmError && (
+        <div className="bg-red-50 border-l-4 border-red-500 text-red-700 px-4 py-3 rounded mb-4">
+          <div className="flex items-start justify-between">
+            <div className="flex items-start">
+              <svg className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+              </svg>
+              <span className="font-medium">{confirmError}</span>
+            </div>
+            <button onClick={() => setConfirmError(null)} className="text-red-500 hover:text-red-700">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
         </div>
       )}
 
@@ -234,8 +266,13 @@ const CommandesPage = () => {
           title="Annuler la commande"
           message={`Êtes-vous sûr de vouloir annuler la commande "${selectedCommande?.numeroCommande}" ? Le stock des produits sera restitué.`}
           onConfirm={confirmCancel}
-          onCancel={() => setIsCancelModalOpen(false)}
+          onCancel={() => {
+            setCancelError(null);
+            setIsCancelModalOpen(false);
+          }}
           isDangerous={true}
+          error={cancelError}
+          loading={mutationLoading}
         />
       )}
     </DashboardLayout>
