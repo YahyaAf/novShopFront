@@ -149,7 +149,7 @@ const CommandeFormModal = ({ onClose, onSuccess }) => {
               <option value="">Sélectionnez un client</option>
               {clients.map((client) => (
                 <option key={client.id} value={client.id}>
-                  {client.nom} - {client.niveauFidelite}
+                  {client.username} ({client.niveauFidelite})
                 </option>
               ))}
             </select>

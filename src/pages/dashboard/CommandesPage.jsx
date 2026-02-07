@@ -225,6 +225,7 @@ const CommandesPage = () => {
         <CommandeDetailsModal
           commande={selectedCommande}
           onClose={() => setIsDetailsModalOpen(false)}
+          onUpdate={refetch}
         />
       )}
 
